@@ -53,6 +53,7 @@ def Desenho_da_Forca(window, chance):
     if chance >= 6:
         # Perna Direita
         pg.draw.line(window, roxo, (300, 350), (225, 450), 10)
+        #avisar derrota e parar jogo(TODO)
 
 def Desenho_Restart_Button(window):
     pg.draw.rect(window, roxo, (700, 100, 200, 65),border_radius = 40)

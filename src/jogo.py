@@ -15,10 +15,14 @@ pg.font.init()
 fonte = pg.font.SysFont("Courier New", 50)
 fonte_rb = pg.font.SysFont("Courier New", 30)
 
-palavras = ['PARALELEPIPEDO',
+#Modo de Jogo(TODO)
+if(modo == 'PC'):
+    palavras = ['PARALELEPIPEDO',
             'ORNITORINCO',
             'APARTAMENTO',
             'XICARA DE CHA']
+else:
+    palavras = [input('Digite a palavra: ').upper()]
 
 tentativas_de_letras = [' ', '-']
 palavra_escolhida = ''

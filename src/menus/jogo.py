@@ -15,15 +15,18 @@ pg.font.init()
 fonte = pg.font.SysFont("Courier New", 50)
 fonte_rb = pg.font.SysFont("Courier New", 30)
 
-#Modo de Jogo(TODO)
-if(modo == 'PC'):
-    palavras = ['PARALELEPIPEDO',
+#Modo de Jogo
+def modo_Jogo(modo):
+    if(modo == 'PC'):
+        palavras = ['PARALELEPIPEDO',
             'ORNITORINCO',
             'APARTAMENTO',
             'XICARA DE CHA']
-else:
-    palavras = [input('Digite a palavra: ').upper()]
+    else:
+        palavras = [input('Digite a palavra: ').upper()]
+    return palavras
 
+palavras = []
 tentativas_de_letras = [' ', '-']
 palavra_escolhida = ''
 palavra_camuflada = ''
@@ -57,8 +60,10 @@ def Desenho_da_Forca(window, chance):
     if chance >= 6:
         # Perna Direita
         pg.draw.line(window, roxo, (300, 350), (225, 450), 10)
-        #avisar derrota e parar jogo(TODO)
-
+        #avisar derrota e parar jogo + mostrar pontuação(TODO)
+        texto = fonte_rb.render('Você Perdeu :(', 1, branco)
+        window.blit(texto, (400, 100))
+        end_game = True
 def Desenho_Restart_Button(window):
     pg.draw.rect(window, roxo, (700, 100, 200, 65),border_radius = 40)
     texto = fonte_rb.render('Restart', 1, branco)
@@ -124,6 +129,7 @@ while True:
     click = pg.mouse.get_pressed()
 
     # Jogo
+    palavras = modo_Jogo('PC')
     Desenho_da_Forca(window, chance)
     Desenho_Restart_Button(window)
     palavra_escolhida, end_game = Sorteando_Palavra(palavras, palavra_escolhida, end_game)
@@ -132,6 +138,11 @@ while True:
     Palavra_do_Jogo(window, palavra_camuflada)
     end_game, chance, tentativas_de_letras, letra = Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, mouse_position_x, mouse_position_y)
 
+    if palavra_camuflada == palavra_escolhida:
+        #avisar vitoria e parar jogo + mostrar pontuação(TODO)
+        texto = fonte_rb.render('Você Ganhou :)', 1, branco)
+        window.blit(texto, (400, 100))
+        end_game = False
     # Click Last Status
     if click[0] == True:
         click_last_status = True

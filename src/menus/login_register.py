@@ -11,8 +11,6 @@ login_screen = uic.loadUi("assets/login.ui")
 register_screen = uic.loadUi("assets/cadastro.ui")
 key = 4
 
-data_users.criar_database()
-
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)
     login_screen.pushButton_5.clicked.connect(open_register_screen)

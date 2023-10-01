@@ -3,27 +3,26 @@ import os
 import sqlite3
 import random
 
-def criar_database():
-    os.remove("users.db") if os.path.exists("users.db") else None
+os.remove("users.db") if os.path.exists("users.db") else None
 
-    conexao = sqlite3.connect('users.db')
-    cursor = conexao.cursor()
+conexao = sqlite3.connect('users.db')
+cursor = conexao.cursor()
 
-    comando = 'CREATE TABLE USERS (ID INTEGER PRIMARY KEY, USUARIO VARCHAR(100), EMAIL VARCHAR(100), SENHA VARCHAR(100))'
-    cursor.execute(comando)
+comando = 'CREATE TABLE USERS (ID INTEGER PRIMARY KEY, USUARIO VARCHAR(100), EMAIL VARCHAR(100), SENHA VARCHAR(100))'
+cursor.execute(comando)
 
-    comando = 'INSERT INTO USERS VALUES (?, ?, ?)'
-    registros = [(1, 'Fernanda', 'fernanda@gmail.com', 'agathachristie123'),
-                (2, 'Guilherme', 'guilherme@gmail.com', 'harrypotter934'),
-                (3, 'John Doe', 'johndoe@gmail.com', 'tester372')]
+comando = 'INSERT INTO USERS VALUES (?, ?, ?)'
+registros = [(1, 'Fernanda', 'fernanda@gmail.com', 'agathachristie123'),
+            (2, 'Guilherme', 'guilherme@gmail.com', 'harrypotter934'),
+            (3, 'John Doe', 'johndoe@gmail.com', 'tester372')]
 
-    for registro in registros:
-        cursor.execute(comando, registro)
-    conexao.commit()
+for registro in registros:
+    cursor.execute(comando, registro)
+conexao.commit()
 
-    comando = 'select * from users'
-    cursor.execute(comando)
-    dados = cursor.fetchall()
+comando = 'select * from users'
+cursor.execute(comando)
+dados = cursor.fetchall()
 
 
 def check_user(usuario, senha):

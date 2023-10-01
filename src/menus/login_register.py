@@ -8,9 +8,6 @@ app = QtWidgets.QApplication([])
 
 login_screen = uic.loadUi("assets/login.ui")
 register_screen = uic.loadUi("assets/cadastro.ui")
-#recover_screen = uic.loadUi("assets/recpass_screen.ui")
-#code_screen = uic.loadUi("assets/code_screen.ui")
-#newpass_screen = uic.loadUi("assets/chargepass_screen.ui")
 
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)

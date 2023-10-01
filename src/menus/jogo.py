@@ -7,7 +7,7 @@ roxo = (255,255,255)
 branco = (0,0,0)
 
 # Setup da tela do Jogo
-window = pg.display.set_mode((1000, 600))
+#window = pg.display.set_mode((1000, 600))
 
 # Inicializando fonte
 pg.font.init()
@@ -26,14 +26,14 @@ def modo_Jogo(modo):
         palavras = [input('Digite a palavra: ').upper()]
     return palavras
 
-palavras = []
+'''palavras = []
 tentativas_de_letras = [' ', '-']
 palavra_escolhida = ''
 palavra_camuflada = ''
 end_game = True
 chance = 0
 letra = ' '
-click_last_status = False
+click_last_status = False'''
 
 def Desenho_da_Forca(window, chance):
     # Desenho da Forca
@@ -112,41 +112,55 @@ def Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_le
             letra = ' '
     return end_game, chance, tentativas_de_letras, letra
 
-while True:
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            pg.quit()
-            quit()
-        if event.type == pg.KEYDOWN:
-            letra = str(pg.key.name(event.key)).upper()
-
-    # Declarando variavel da posição do mouse
-    mouse = pg.mouse.get_pos()
-    mouse_position_x = mouse[0]
-    mouse_position_y = mouse[1]
-
-    # Declarando variavel do click do mouse
-    click = pg.mouse.get_pressed()
-
-    # Jogo
-    palavras = modo_Jogo('PC')
-    Desenho_da_Forca(window, chance)
-    Desenho_Restart_Button(window)
-    palavra_escolhida, end_game = Sorteando_Palavra(palavras, palavra_escolhida, end_game)
-    palavra_camuflada = Camuflando_Palavra(palavra_escolhida, palavra_camuflada, tentativas_de_letras)
-    tentativas_de_letras, chance = Tentando_uma_Letra(tentativas_de_letras, palavra_escolhida, letra, chance)
-    Palavra_do_Jogo(window, palavra_camuflada)
-    end_game, chance, tentativas_de_letras, letra = Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, mouse_position_x, mouse_position_y)
-
-    if palavra_camuflada == palavra_escolhida:
-        #avisar vitoria e parar jogo + mostrar pontuação(TODO)
-        texto = fonte_rb.render('Você Ganhou :)', 1, branco)
-        window.blit(texto, (400, 100))
-        end_game = False
-    # Click Last Status
-    if click[0] == True:
-        click_last_status = True
-    else:
+def main(modo):
+    if __name__ == "__main__":
+        window = pg.display.set_mode((1000, 600))
+        chance = 0
+        palavras = []
+        tentativas_de_letras = [' ', '-']
+        palavra_escolhida = ''
+        palavra_camuflada = ''
+        end_game = True
+        chance = 0
+        letra = ' '
         click_last_status = False
+        while True:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    quit()
+                if event.type == pg.KEYDOWN:
+                    letra = str(pg.key.name(event.key)).upper()
 
-    pg.display.update()
+            # Declarando variavel da posição do mouse
+            mouse = pg.mouse.get_pos()
+            mouse_position_x = mouse[0]
+            mouse_position_y = mouse[1]
+
+            # Declarando variavel do click do mouse
+            click = pg.mouse.get_pressed()
+
+            # Jogo
+            palavras = modo_Jogo(modo)
+            Desenho_da_Forca(window, chance)
+            Desenho_Restart_Button(window)
+            palavra_escolhida, end_game = Sorteando_Palavra(palavras, palavra_escolhida, end_game)
+            palavra_camuflada = Camuflando_Palavra(palavra_escolhida, palavra_camuflada, tentativas_de_letras)
+            tentativas_de_letras, chance = Tentando_uma_Letra(tentativas_de_letras, palavra_escolhida, letra, chance)
+            Palavra_do_Jogo(window, palavra_camuflada)
+            end_game, chance, tentativas_de_letras, letra = Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, mouse_position_x, mouse_position_y)
+
+            if palavra_camuflada == palavra_escolhida:
+                #avisar vitoria e parar jogo + mostrar pontuação(TODO)
+                texto = fonte_rb.render('Você Ganhou :)', 1, branco)
+                window.blit(texto, (400, 100))
+                end_game = False
+            # Click Last Status
+            if click[0] == True:
+                click_last_status = True
+            else:
+                click_last_status = False
+
+            pg.display.update()
+
+main('PC')

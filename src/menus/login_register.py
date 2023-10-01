@@ -3,11 +3,15 @@ from PyQt5 import uic, QtWidgets
 import random
 from . import menuPrincipal
 import re
+from database import data_palavras, data_users
 
 app = QtWidgets.QApplication([])
 
 login_screen = uic.loadUi("assets/login.ui")
 register_screen = uic.loadUi("assets/cadastro.ui")
+key = 4
+
+data_users.criar_database()
 
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)
@@ -32,7 +36,7 @@ def login():
     if username == "" or password == "":
         login_screen.label_3.setText("Preencha todos os campos!")
         return
-    elif user.login(username, password):
+    elif data_users.check_user(username, password):
         login_screen.label_3.setText("Login realizado com sucesso!")
         login_screen.close()
         menuPrincipal.run_menu()
@@ -50,7 +54,6 @@ def register():
     register_screen.label_8.setText("")
     
     username = register_screen.usuario.text()
-    username = register_screen.usuario.text()
     email = register_screen.email.text()
     password = register_screen.senha_2.text()
     password2 = register_screen.senha_3.text()
@@ -61,7 +64,7 @@ def register():
         register_screen.label_7.setText("Email inválido!")
         return
     else:
-        result = user.register(username, email, password, password2)
+        result = data_users.check_register(username, email, password, key)
     
         if result == "Usuário cadastrado com sucesso!":
             register_screen.close()

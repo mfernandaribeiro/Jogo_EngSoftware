@@ -1,4 +1,5 @@
 #pip install pysqlite
+#se não instalar, pip install sqlite5
 import os
 import sqlite3
 import random
@@ -26,12 +27,11 @@ dados = cursor.fetchall()
 
 cursor.execute('SELECT * FROM palavras ORDER BY RANDOM() LIMIT 1')
 
-# Recuperar a palavra aleatória
+
 palavra_aleatoria = cursor.fetchone()
 
-
-# A palavra aleatória estará na variável 'palavra_aleatoria'
-print(palavra_aleatoria[1])
+print(palavra_aleatoria[1]) #palavra
+print(palavra_aleatoria[2]) #pontuacoo
 
 
 

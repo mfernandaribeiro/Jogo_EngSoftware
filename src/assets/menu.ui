@@ -501,7 +501,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>140</y>
+     <y>160</y>
      <width>231</width>
      <height>41</height>
     </rect>
@@ -632,7 +632,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>210</y>
+     <y>240</y>
      <width>231</width>
      <height>41</height>
     </rect>
@@ -757,137 +757,6 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Modo contra outro jogador</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pontuacao">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>280</y>
-     <width>231</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="BrightText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>73</red>
-         <green>77</green>
-         <blue>104</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="AlternateBase">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>34</red>
-         <green>34</green>
-         <blue>59</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="NoRole">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>70</red>
-         <green>73</green>
-         <blue>99</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ToolTipBase">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>74</red>
-         <green>78</green>
-         <blue>105</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="BrightText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>73</red>
-         <green>77</green>
-         <blue>104</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="AlternateBase">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>34</red>
-         <green>34</green>
-         <blue>59</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="NoRole">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>70</red>
-         <green>73</green>
-         <blue>99</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ToolTipBase">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>74</red>
-         <green>78</green>
-         <blue>105</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="BrightText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>73</red>
-         <green>77</green>
-         <blue>104</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="AlternateBase">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>34</red>
-         <green>34</green>
-         <blue>59</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="NoRole">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>70</red>
-         <green>73</green>
-         <blue>99</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ToolTipBase">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>74</red>
-         <green>78</green>
-         <blue>105</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="text">
-    <string>Ver pontuação</string>
    </property>
   </widget>
   <widget class="QPushButton" name="sair">

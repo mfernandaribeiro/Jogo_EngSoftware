@@ -4,6 +4,7 @@ from jogo import main
 
 app = QtWidgets.QApplication([])
 menuPrincipal = uic.loadUi("../assets/menu.ui")
+palavra = uic.loadUi("../assets/palavra.ui")
 
 def run_Menu():
     menuPrincipal.vsPc.clicked.connect(open_vsPC)
@@ -15,10 +16,25 @@ def run_Menu():
 
 def open_vsPC():
     menuPrincipal.close()
-    main('PC')
+    main('PC',' ')
 
 def open_vsJogador():
+    #abrir tela digitar palavra
+    palavra.show()
     menuPrincipal.close()
-    main('Jogador')
+    palavra.pushButton.clicked.connect(vsJogador)
+
+def vsJogador():
+    palavra.label_2.setText("")
+    input_text = palavra.lineEdit.text().upper() 
+    
+    if not input_text:
+        palavra.label_2.setText("Preencha pelo menos uma palavra!")
+        return
+    else:
+        palavras = input_text.split()
+        main('Jogador', palavras)
+
+
 
 run_Menu()

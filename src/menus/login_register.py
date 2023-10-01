@@ -1,13 +1,13 @@
 import pygame
 from PyQt5 import uic, QtWidgets
 import random
-import menus.menuPrincipal
+import menuPrincipal
 import re
 
 app = QtWidgets.QApplication([])
 
-login_screen = uic.loadUi("assets/login.ui")
-register_screen = uic.loadUi("assets/cadastro.ui")
+login_screen = uic.loadUi("../assets/login.ui")
+register_screen = uic.loadUi("../assets/cadastro.ui")
 
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)
@@ -35,7 +35,7 @@ def login():
     elif user.login(username, password):
         login_screen.label_3.setText("Login realizado com sucesso!")
         login_screen.close()
-        menus.menuPrincipal.run_menu()
+        menuPrincipal.run_menu()
     else:
         login_screen.label_3.setText("Usuário ou senha incorretos!")
 
@@ -77,3 +77,6 @@ def register():
             error_label = error_labels[result]
             if error_label:
                 error_label.setText(result)
+
+if __name__ == '__main__':
+    run_login()

@@ -36,5 +36,5 @@ def vsJogador():
         main('Jogador', palavras)
 
 
-
-run_Menu()
+if __name__ == '__main__':
+    run_Menu()

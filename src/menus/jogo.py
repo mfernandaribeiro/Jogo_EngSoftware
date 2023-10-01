@@ -145,7 +145,6 @@ def main(modo,palavra):
                 quit()
             if event.type == pg.KEYDOWN:
                 letra = str(pg.key.name(event.key)).upper()
-                print(letra)
 
         # Declarando variavel da posição do mouse
         mouse = pg.mouse.get_pos()

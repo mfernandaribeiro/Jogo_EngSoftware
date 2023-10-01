@@ -3,7 +3,7 @@ from PyQt5 import uic, QtWidgets
 import random
 from . import menuPrincipal
 import re
-from database import data_palavras, data_users
+from database import data_users, data_palavras
 
 app = QtWidgets.QApplication([])
 

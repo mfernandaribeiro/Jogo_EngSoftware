@@ -1,6 +1,6 @@
 import pygame as pg
 import random
-
+#from database import data_users, data_palavras
 # Cores do jogo
 azul = (74,78,105)
 roxo = (255,255,255)

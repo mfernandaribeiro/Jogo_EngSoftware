@@ -125,7 +125,7 @@ def Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_le
     return end_game, chance, tentativas_de_letras, letra
 
 def main(modo):
-    if __name__ == "__main__":
+    #if __name__ == "__main__":
         pontuacao = 0
         window = pg.display.set_mode((1000, 600))
         chance = 0
@@ -180,5 +180,5 @@ def main(modo):
                 click_last_status = False
 
             pg.display.update()
-
-main('PC')
+if __name__ == "__main__":
+    main('PC')

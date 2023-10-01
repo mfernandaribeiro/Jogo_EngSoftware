@@ -19,7 +19,7 @@ fonte_rb = pg.font.SysFont("Courier New", 30)
 def modo_Jogo(modo):
     if(modo == 'PC'):
         palavras = ['PARALELEPIPEDO',
-            'ORNITORINCO',
+            'ORNITORRINCO',
             'APARTAMENTO',
             'XICARA DE CHA']
     else:

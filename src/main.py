@@ -1,12 +1,3 @@
-#import pygame
-#from PyQt5 import uic, QtWidgets
+import menus.login_register as login_register
 
-#app = QtWidgets.QApplication([])
-#login_screen = uic.loadUi("assets/login.ui")
-
-#login_screen.show()
-#app.exec()
-#app.quit()
-from menus.login_register import run_login
-
-run_login()
+login_register.run_login()

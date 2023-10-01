@@ -1,10 +1,10 @@
 import pygame as pg
 from PyQt5 import uic, QtWidgets
-from jogo import main
+from . import jogo
 
 app = QtWidgets.QApplication([])
-menuPrincipal = uic.loadUi("../assets/menu.ui")
-palavra = uic.loadUi("../assets/palavra.ui")
+menuPrincipal = uic.loadUi("assets/menu.ui")
+palavra = uic.loadUi("assets/palavra.ui")
 
 def run_Menu():
     menuPrincipal.vsPc.clicked.connect(open_vsPC)
@@ -16,7 +16,7 @@ def run_Menu():
 
 def open_vsPC():
     menuPrincipal.close()
-    main('PC',' ')
+    jogo.main('PC',' ')
 
 def open_vsJogador():
     #abrir tela digitar palavra
@@ -33,7 +33,7 @@ def vsJogador():
         return
     else:
         palavras = input_text.split()
-        main('Jogador', palavras)
+        jogo.main('Jogador', palavras)
 
 
 if __name__ == '__main__':

@@ -1,13 +1,13 @@
 import pygame
 from PyQt5 import uic, QtWidgets
 import random
-import menuPrincipal
+from . import menuPrincipal
 import re
 
 app = QtWidgets.QApplication([])
 
-login_screen = uic.loadUi("../assets/login.ui")
-register_screen = uic.loadUi("../assets/cadastro.ui")
+login_screen = uic.loadUi("assets/login.ui")
+register_screen = uic.loadUi("assets/cadastro.ui")
 
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)

@@ -1,6 +1,6 @@
 import pygame as pg
 import random
-from database import data_palavras
+#from database import data_palavras
 
 #from database import data_users, data_palavras
 # Cores do jogo
@@ -20,7 +20,10 @@ fonte_rb = pg.font.SysFont("Courier New", 30)
 #Modo de Jogo
 def modo_Jogo(modo,palavra):
     if(modo == 'PC'):
-        palavras = data_palavras.cria_word_data()
+        palavras = ['ORNITORRINCO',
+                    'CACHORRO',
+                    'MENINA',
+                    'GATO']
     else:
         palavras = palavra
     return palavras
@@ -83,8 +86,8 @@ def Desenho_Restart_Button(window):
 def Sorteando_Palavra(palavras, palavra_escolhida, end_game):
     if end_game == True:
         #palavra_n = data_palavras.sorteio_palavra()
-        palavra_escolhida1 = data_palavras.sorteio_palavra()
-        palavra_escolhida = palavra_escolhida1[1]
+        palavra_escolhida = random.choice(palavras)
+        #palavra_escolhida = palavra_escolhida1[1]
         end_game = False
         chance = 0
     return palavra_escolhida, end_game

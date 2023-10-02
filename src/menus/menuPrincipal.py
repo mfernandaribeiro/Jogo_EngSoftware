@@ -1,6 +1,6 @@
 import pygame as pg
 from PyQt5 import uic, QtWidgets
-from . import jogo
+import menus.jogo as jogo
 
 app = QtWidgets.QApplication([])
 menuPrincipal = uic.loadUi("assets/menu.ui")

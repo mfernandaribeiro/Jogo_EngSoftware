@@ -1,15 +1,17 @@
 import pygame
 from PyQt5 import uic, QtWidgets
 import random
-from . import menuPrincipal
+import menus.menuPrincipal as menuPrincipal
 import re
-from database import data_users, data_palavras
+from database import data_users
 
 app = QtWidgets.QApplication([])
 
 login_screen = uic.loadUi("assets/login.ui")
 register_screen = uic.loadUi("assets/cadastro.ui")
 key = 4
+data_users.criar_cursor()
+data_users.inicializar_banco_de_dados()
 
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)

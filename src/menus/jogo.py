@@ -1,5 +1,7 @@
 import pygame as pg
 import random
+from database import data_palavras
+
 #from database import data_users, data_palavras
 # Cores do jogo
 azul = (74,78,105)
@@ -18,10 +20,7 @@ fonte_rb = pg.font.SysFont("Courier New", 30)
 #Modo de Jogo
 def modo_Jogo(modo,palavra):
     if(modo == 'PC'):
-        palavras = ['PARALELEPIPEDO',
-            'ORNITORRINCO',
-            'APARTAMENTO',
-            'XICARA DE CHA']
+        palavras = data_palavras.cria_word_data()
     else:
         palavras = palavra
     return palavras

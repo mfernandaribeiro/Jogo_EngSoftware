@@ -23,7 +23,13 @@ def cria_word_data():
     comando = 'INSERT INTO PALAVRAS VALUES (?, ?, ?)'
     registros = [(1, 'ORNITORRINCO', 3),
                 (2, 'PAPAGAIO', 2),
-                (3, 'SHOPPING', 2)]
+                (3, 'SHOPPING', 2),
+                (4, 'CACHORRO', 2),
+                (5, 'GATO', 2),
+                (6, 'ELEFANTE', 4),
+                (7, 'COMPUTADOR', 5),
+                (8, 'LUA', 2),
+                (9, 'OCEANO', 3),]
 
     for registro in registros:
         cursor.execute(comando, registro)

@@ -74,6 +74,7 @@ def Desenho_da_Forca(window, chance, pontuacao, end):
         window.blit(texto_P, (400, 150))
     return end
 preto = (0, 0, 0)
+branco = (255, 255, 255)
 def Desenho_Restart_Button(window):
     pg.draw.rect(window, preto, (700, 100, 200, 65))
     texto = fonte_rb.render('Restart', True, branco)
@@ -109,6 +110,20 @@ def Tentando_uma_Letra(tentativas_de_letras, palavra_escolhida, letra, chance,po
 def Palavra_do_Jogo(window, palavra_camuflada):
     palavra = fonte.render(palavra_camuflada, 1, roxo)
     window.blit(palavra, (200, 500))
+
+def Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, x, y):
+    count = 0
+    limite = len(palavra_camuflada)
+    for n in range(len(palavra_camuflada)):
+        if palavra_camuflada[n] != '#':
+            count += 1
+    if count == limite and click_last_status == False and click[0] == True:
+        if x >= 700 and x <= 900 and y >= 100 and y <= 165:
+            end_game = True
+            chance = 0
+            letra = ' '
+            tentativas_de_letras = [' ', '-']
+    return end_game, chance, letra, tentativas_de_letras
 
 def main(modo,palavra):
     pontuacao = 0
@@ -147,6 +162,7 @@ def main(modo,palavra):
             palavra_camuflada = Camuflando_Palavra(palavra_escolhida, palavra_camuflada, tentativas_de_letras)
             tentativas_de_letras, chance, pontuacao = Tentando_uma_Letra(tentativas_de_letras, palavra_escolhida, letra, chance,pontuacao)
             Palavra_do_Jogo(window, palavra_camuflada)
+            #Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, x, y)
 
         if palavra_camuflada == palavra_escolhida:
             #avisar vitoria e parar jogo + mostrar pontuação

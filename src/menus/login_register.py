@@ -41,20 +41,15 @@ def open_login_screen():
 def login():
     login_screen.label_3.setText("")
     username = login_screen.usuario_2.text()
-    password = login_screen.senha_2.text() ###################### aq tava usuario_2
-    print("Qqqqqqqqqqqqq")
-    print(username)
-    print(password)
+    password = login_screen.senha_2.text()
+    
     if username == "" or password == "":
         login_screen.label_3.setText("Preencha todos os campos!")
         return
     elif data_users.check_user(username, password):
-        print("elif miseravi")
         login_screen.label_3.setText("Login realizado com sucesso!")
-        print('antes do close')
         login_screen.close()
-        print('antes do menu')
-        menuPrincipal.run_Menu() ###### MEnu mincusculo
+        menuPrincipal.run_Menu()
     else:
         login_screen.label_3.setText("Usuário ou senha incorretos!")
 

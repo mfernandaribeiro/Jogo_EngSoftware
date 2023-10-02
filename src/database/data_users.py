@@ -38,8 +38,6 @@ def check_user(usuario, senha):
     cursor.execute('SELECT * FROM users WHERE USUARIO = ?', (usuario,))
     registro = cursor.fetchone()
 
-    print(registro)
-
     if registro is not None:
         if registro[3] == senha:
             conexao.close()

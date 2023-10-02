@@ -1,6 +1,6 @@
 import pygame as pg
 import random
-from database import data_palavras
+#from database import data_palavras
 
 #from database import data_users, data_palavras
 # Cores do jogo
@@ -20,7 +20,10 @@ fonte_rb = pg.font.SysFont("Courier New", 30)
 #Modo de Jogo
 def modo_Jogo(modo,palavra):
     if(modo == 'PC'):
-        palavras = data_palavras.cria_word_data()
+        palavras = ['ORNITORRINCO',
+                    'CACHORRO',
+                    'MENINA',
+                    'GATO']
     else:
         palavras = palavra
     return palavras
@@ -77,14 +80,14 @@ preto = (0, 0, 0)
 branco = (255, 255, 255)
 def Desenho_Restart_Button(window):
     pg.draw.rect(window, preto, (700, 100, 200, 65))
-    texto = fonte_rb.render('Restart', True, branco)
+    texto = fonte_rb.render('Restart', 1, branco)
     window.blit(texto, (740, 120))
 
 def Sorteando_Palavra(palavras, palavra_escolhida, end_game):
     if end_game == True:
         #palavra_n = data_palavras.sorteio_palavra()
-        palavra_escolhida1 = data_palavras.sorteio_palavra()
-        palavra_escolhida = palavra_escolhida1[1]
+        palavra_escolhida = random.choice(palavras)
+        #palavra_escolhida = palavra_escolhida1[1]
         end_game = False
         chance = 0
     return palavra_escolhida, end_game
@@ -118,12 +121,13 @@ def Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_le
         if palavra_camuflada[n] != '#':
             count += 1
     if count == limite and click_last_status == False and click[0] == True:
+        print('Ok')
         if x >= 700 and x <= 900 and y >= 100 and y <= 165:
+            tentativas_de_letras = [' ', '-']
             end_game = True
             chance = 0
             letra = ' '
-            tentativas_de_letras = [' ', '-']
-    return end_game, chance, letra, tentativas_de_letras
+    return end_game, chance, tentativas_de_letras, letra
 
 def main(modo,palavra):
     pontuacao = 0
@@ -158,11 +162,13 @@ def main(modo,palavra):
         if(end == False):
             palavras = modo_Jogo(modo,palavra)
             end = Desenho_da_Forca(window, chance,pontuacao,end)
+            #Desenho_Restart_Button(window)
             palavra_escolhida, end_game = Sorteando_Palavra(palavras, palavra_escolhida, end_game)
             palavra_camuflada = Camuflando_Palavra(palavra_escolhida, palavra_camuflada, tentativas_de_letras)
             tentativas_de_letras, chance, pontuacao = Tentando_uma_Letra(tentativas_de_letras, palavra_escolhida, letra, chance,pontuacao)
             Palavra_do_Jogo(window, palavra_camuflada)
-            #Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, x, y)
+            #end_game, chance, tentativas_de_letras, letra = Restart_do_Jogo(palavra_camuflada, end_game, chance, letra, tentativas_de_letras, click_last_status, click, mouse_position_x, mouse_position_y)
+
 
         if palavra_camuflada == palavra_escolhida:
             #avisar vitoria e parar jogo + mostrar pontuação

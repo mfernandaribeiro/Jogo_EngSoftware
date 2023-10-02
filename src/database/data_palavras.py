@@ -4,6 +4,13 @@ import os
 import sqlite3
 import random
 
+DB_FILE = 'palavras.db'
+
+def criar_cursor():
+    conexao = sqlite3.connect(DB_FILE)
+    cursor = conexao.cursor()
+    return conexao, cursor
+
 def cria_word_data():
     os.remove("palavras.db") if os.path.exists("palavras.db") else None
 
@@ -22,6 +29,8 @@ def cria_word_data():
         cursor.execute(comando, registro)
     conexao.commit()
 
+def sorteio_palavra():
+    conexao, cursor = criar_cursor()
     comando = 'select * from palavras'
     cursor.execute(comando)
     dados = cursor.fetchall()

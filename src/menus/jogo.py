@@ -73,11 +73,17 @@ def Desenho_da_Forca(window, chance, pontuacao, end):
         texto_P = fonte_rb.render('Pontuação: ' + str(pontuacao), 1, branco)
         window.blit(texto_P, (400, 150))
     return end
+preto = (0, 0, 0)
+def Desenho_Restart_Button(window):
+    pg.draw.rect(window, preto, (700, 100, 200, 65))
+    texto = fonte_rb.render('Restart', True, branco)
+    window.blit(texto, (740, 120))
 
 def Sorteando_Palavra(palavras, palavra_escolhida, end_game):
     if end_game == True:
-        palavra_n = random.randint(0, len(palavras) - 1)
-        palavra_escolhida = palavras[palavra_n]
+        #palavra_n = data_palavras.sorteio_palavra()
+        palavra_escolhida1 = data_palavras.sorteio_palavra()
+        palavra_escolhida = palavra_escolhida1[1]
         end_game = False
         chance = 0
     return palavra_escolhida, end_game
@@ -157,5 +163,7 @@ def main(modo,palavra):
             click_last_status = False
 
             pg.display.update()
+
+        Desenho_Restart_Button(window)
 if __name__ == "__main__":
     main(modo,palavra)

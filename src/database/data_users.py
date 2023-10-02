@@ -33,6 +33,40 @@ def inicializar_banco_de_dados():
 
     conexao.close()
 
+def check_user(usuario, senha):
+    conexao, cursor = criar_cursor()
+    cursor.execute('SELECT * FROM users WHERE USUARIO = ?', (usuario,))
+    registro = cursor.fetchone()
+
+    if registro is not None:
+        if registro[3] == senha:
+            conexao.close()
+            return True
+        else:
+            conexao.close()
+            return False
+    else:
+        conexao.close()
+        return False
+
+def check_register(usuario, email, senha, key):
+    conexao, cursor = criar_cursor()
+    cursor.execute('SELECT * FROM users WHERE USUARIO = ?', (usuario,))
+    registro_user = cursor.fetchone()
+    cursor.execute('SELECT * FROM users WHERE EMAIL = ?', (email,))
+    registro_email = cursor.fetchone()
+
+    if registro_user is not None:
+        conexao.close()
+        return False
+    if registro_email is not None:
+        conexao.close()
+        return False
+    cursor.execute('INSERT INTO USERS (ID, USUARIO, SENHA) VALUES (?, ?, ?)', (key, usuario, senha))
+    conexao.commit()
+    conexao.close()
+    return True
+
 if __name__ == "__main__":
     inicializar_banco_de_dados()
 

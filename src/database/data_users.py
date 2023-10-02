@@ -31,12 +31,14 @@ def inicializar_banco_de_dados():
 
         conexao.commit()
 
-    conexao.close()
 
 def check_user(usuario, senha):
+    #print(registro)
     conexao, cursor = criar_cursor()
     cursor.execute('SELECT * FROM users WHERE USUARIO = ?', (usuario,))
     registro = cursor.fetchone()
+
+    print(registro)
 
     if registro is not None:
         if registro[3] == senha:

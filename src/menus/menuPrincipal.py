@@ -11,8 +11,8 @@ def run_Menu():
     menuPrincipal.vsJogador.clicked.connect(open_vsJogador)
     menuPrincipal.sair.clicked.connect(menuPrincipal.close)
     menuPrincipal.show()
-    app.exec()
-    app.quit()
+    #app.exec() esse comando só pode ser utilizado uma vez só no programa
+    #app.quit()
 
 def open_vsPC():
     menuPrincipal.close()
@@ -35,6 +35,9 @@ def vsJogador():
         palavras = input_text.split()
         jogo.main('Jogador', palavras)
 
+def main():
+    run_Menu()
+    app.exec()
 
 if __name__ == '__main__':
-    run_Menu()
+    main()

@@ -4,14 +4,24 @@ import random
 import menus.menuPrincipal as menuPrincipal
 import re
 from database import data_users
+from database import backup
+import sqlite3
 
 app = QtWidgets.QApplication([])
 
 login_screen = uic.loadUi("assets/login.ui")
 register_screen = uic.loadUi("assets/cadastro.ui")
 key = 4
+'''data_users.inicializar_banco_de_dados()
 data_users.criar_cursor()
-data_users.inicializar_banco_de_dados()
+
+conexao = sqlite3.connect('users.db')
+cursor = conexao.cursor()
+comando = 'select * from users'
+cursor.execute(comando)
+dados = cursor.fetchall()'''
+
+
 
 def run_login(): 
     login_screen.pushButton_6.clicked.connect(login)
@@ -30,16 +40,21 @@ def open_login_screen():
 
 def login():
     login_screen.label_3.setText("")
-    username = login_screen.usuario.text()
-    password = login_screen.usuario_2.text()
-    
+    username = login_screen.usuario_2.text()
+    password = login_screen.senha_2.text() ###################### aq tava usuario_2
+    print("Qqqqqqqqqqqqq")
+    print(username)
+    print(password)
     if username == "" or password == "":
         login_screen.label_3.setText("Preencha todos os campos!")
         return
     elif data_users.check_user(username, password):
+        print("elif miseravi")
         login_screen.label_3.setText("Login realizado com sucesso!")
+        print('antes do close')
         login_screen.close()
-        menuPrincipal.run_menu()
+        print('antes do menu')
+        menuPrincipal.run_Menu() ###### MEnu mincusculo
     else:
         login_screen.label_3.setText("Usuário ou senha incorretos!")
 
